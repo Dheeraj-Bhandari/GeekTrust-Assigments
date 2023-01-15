@@ -1,17 +1,17 @@
 
-
-import './App.css'
-import NavBar from './components/NavBar'
-import ProductListing from './components/ProductListing'
+import TeerexRoute from './Routes/TeerexRoute'
 function App() {
  
   
 
   return (
+     
+         
     <div className="App">
-      <NavBar/>
-     <ProductListing/>
+      <TeerexRoute/>
+     
     </div>
+    
   )
 }
 

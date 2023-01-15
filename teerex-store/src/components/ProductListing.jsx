@@ -1,16 +1,20 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import "./productListingCss.css";
 import { useProductContext } from "../context/product_Context";
 import { useFilterContext } from "../context/filter_Context";
+import NavBar from "./NavBar";
+import { useCartContext } from "../context/cart.Context";
 
 const ProductListing = () => {
   const { isLoading, products } = useProductContext();
+  const {addToCart} = useCartContext();
   const {
-    filters: { type , color},
+    filters: { type , color, price, maxPrice, minPrice},
     filter_Products,
     sorting,
     all_products,
     updateProductbyFilter,
+    clearFilters
   } = useFilterContext();
 
   // TO GET THE UNIQUE DATA FOR EACH FIED DEFINED IN FILTER SECTION
@@ -34,6 +38,7 @@ const ProductListing = () => {
 
   return (
     <>
+    <NavBar/>
       <div className="main">
         {/* SideFilter Start Here */}
         <div className="SideBar-Filter">
@@ -42,7 +47,7 @@ const ProductListing = () => {
             <form action="#">
               <label htmlFor="sort">
                 <select
-                  name="sort"
+                  name={type}
                   className="sort-selection--style"
                   onChange={sorting}
                 >
@@ -72,7 +77,7 @@ const ProductListing = () => {
                     value={ele}
                     id="flexCheckDefault"
                     name="type"
-                    key={index}
+                    key={index*new Date()}
                     onChange={updateProductbyFilter}
                   />
 
@@ -119,7 +124,7 @@ const ProductListing = () => {
               return (
                 <i type="button" 
                 value={ele} 
-                key={index} 
+                key={index*new Date()}
                 name="color"
                 // style={{ margin:'5px'}} 
                 onClick={updateProductbyFilter}
@@ -131,7 +136,7 @@ const ProductListing = () => {
            else return (
               <button type="button" 
               value={ele} 
-              key={index} 
+              key={index*new Date()}
               name="color"
               style={{backgroundColor: ele, margin:'5px' }} 
               
@@ -145,9 +150,20 @@ const ProductListing = () => {
           {/* Filter by  Color End*/}
 
 
-          {/* Filter by  Color*/}
-           
-          {/* Filter by  Color End*/}
+
+
+          {/* Filter by  Price*/}
+           <div className="filter-price">
+            <h6>Filter By Price</h6>
+            <p>Price Rs{price}</p>
+            <input type="range" min={minPrice} max={maxPrice} value={price} name="price" onChange={updateProductbyFilter} />
+
+           </div>
+          {/* Filter by  Price End*/}
+
+          {/* Clear Filter Button Start */}
+          <button className="btn btn-danger" onClick={clearFilters}>Clear Filter</button>
+          {/* Clear Filter Button End */}
 
 
         
@@ -160,7 +176,9 @@ const ProductListing = () => {
                 <img src={ele.imageURL} alt={ele.name} />
                 <h3 className="card-title ">{ele.name}</h3>
                 <p>Rs. {ele.price}</p>
-                <button type="button" className="btn btn-success">
+                <button type="button" className="btn btn-success"
+                onClick={()=>addToCart(ele.id, ele.color, ele.price, ele)}
+                >
                   Add to Cart
                 </button>
               </div>
