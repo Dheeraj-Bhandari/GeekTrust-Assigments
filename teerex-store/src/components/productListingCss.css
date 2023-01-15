@@ -10,7 +10,7 @@
 /* Product Card Start */
 .Products-Cards{
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(5, 1fr);
     gap: 20px;
     justify-content: center;
     align-items: center;
@@ -33,6 +33,33 @@
 
 /* Product Card End */
 
+@media screen and (max-width: 650px) {
+    .Products-Cards{
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 20px;
+        justify-content: center;
+        align-items: center;
+       
+    }
+    .SideBar-Filter{
+        display: none;
+    }
+  }
+
+  @media screen and (max-width: 992px) {
+    .Products-Cards{
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 20px;
+        justify-content: center;
+        align-items: center;
+       
+    }
+    .SideBar-Filter{
+        display: none;
+    }
+  }
 
 
 /* Sidebar Filter Css Start */
