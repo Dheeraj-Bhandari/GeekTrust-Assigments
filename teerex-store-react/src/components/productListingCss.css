@@ -1,0 +1,147 @@
+/* Main div css Start */
+
+.main{
+    display: flex;
+    text-align: start;
+    
+ 
+}
+/* Main div css end */
+
+/* Product Card Start */
+.Products-Cards{
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 20px;
+    justify-content: center;
+    align-items: center;
+    margin: 2rem;
+   
+}
+.Product-Card{
+    box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+    border-radius: 5px;
+    padding: 15px;
+    
+}
+.Product-Card:hover{
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+    cursor: pointer;
+}
+
+.Product-Card img{
+    width: 100%;
+}
+/* Moible Filter icon */
+.mobile-filter{
+
+    display: none;
+}
+/* Product Card End */
+
+@media screen and (max-width: 650px) {
+    .Products-Cards{
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 20px;
+        justify-content: center;
+        align-items: center;
+       
+    }
+    .SideBar-Filter{
+        display: none;
+    }
+    .SideBar-Filter-Mobile{
+        display: block;
+    }
+    .main{
+       
+        flex-direction: column;
+     
+    }
+    .mobile-filter{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        
+        display: block;
+    }
+    .mobile-filter i{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+  }
+
+  @media screen and (max-width: 992px) {
+    .Products-Cards{
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 20px;
+        justify-content: center;
+        align-items: center;
+       
+    }
+   
+  }
+
+
+/* Sidebar Filter Css Start */
+.SideBar-Filter{
+ 
+    width: 30%;
+    height: 100vh;
+    box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
+    position: sticky;
+    margin: 2rem;
+    padding: 2rem;
+    
+}
+/* Sidebar Filter Css End */
+
+/* filter-by-type-div Start */
+.filter-by-type-div{
+    margin-top: 3rem;
+}
+/* filter-by-type-div End */
+
+
+/* Gender-selection Start */
+.gender-selection{
+    margin-top: 3rem;
+}
+/* Gender-selection End */
+
+
+/* Color Section Start */
+.color-selection{
+    margin-top: 4rem;
+}
+
+/* Adding Tick mark on Selected  */
+.fa-check{
+    opacity: 1;
+    color: white;
+}
+
+.not-selected{
+    opacity:0.5
+}
+/* Color Section End */
+
+
+
+
+/* filter-price Start */
+.filter-price{
+    margin-top: 4rem;
+}
+/* filter-price End */
+
+
+
+/* clear-filter-btnStart */
+.clear-filter-btn{
+    margin-top: 3rem;
+}
+/* clear-filter-btn End */
