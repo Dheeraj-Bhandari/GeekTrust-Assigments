@@ -2,12 +2,13 @@ import React from "react";
 import "./productListingCss.css";
 import { useProductContext } from "../context/product_Context";
 import { useFilterContext } from "../context/filter_Context";
-import NavBar from "./NavBar";
 import { useCartContext } from "../context/cart.Context";
 
 const ProductListing = () => {
-  const { isLoading, products } = useProductContext();
+  const { isLoading } = useProductContext();
   const {addToCart} = useCartContext();
+
+  // Getting all Filter Context Value 
   const {
     filters: { type , color, price, maxPrice, minPrice},
     filter_Products,
@@ -17,8 +18,8 @@ const ProductListing = () => {
     clearFilters
   } = useFilterContext();
 
-  // TO GET THE UNIQUE DATA FOR EACH FIED DEFINED IN FILTER SECTION
 
+  // FUNCITON TO GET THE UNIQUE DATA FOR EACH FIED DEFINED IN FILTER SECTION
   const getUniqueData = (data, property) => {
     let newVal = data.map((ele) => {
       return ele[property];
@@ -27,22 +28,24 @@ const ProductListing = () => {
   };
 
   // Common Function for Filtering Date from Sidebar (DRY)
-
   const filterByCategoryType = getUniqueData(all_products, "type");
   const filterByCategoryColor = getUniqueData(all_products, "color");
   
-
+  // Showing Loading Until Data Fecthed From API
   if (isLoading) {
     return <div>...Loading Teerex</div>;
   }
 
+  // Else Showing APi DATA
   return (
     <>
-    <NavBar/>
+    
       <div className="main">
         {/* SideFilter Start Here */}
         <div className="SideBar-Filter">
-          {/* Filter by Sort*/}
+
+
+          {/* ----------Filter by Sort start ---------*/}
           <div className="sort-selection">
             <form action="#">
               <label htmlFor="sort">
@@ -62,10 +65,10 @@ const ProductListing = () => {
               </label>
             </form>
           </div>
-          {/* Filter by Sort End*/}
+          {/* ----------Filter by Sort End ---------*/}
 
-          {/* Filter By Type start */}
-          <div className="form-check">
+          {/* -------------Filter By Type start--------- */}
+          <div className="form-check filter-by-type-div">
             <h6>Filter By Type</h6>
 
             {filterByCategoryType.map((ele, index) => {
@@ -89,9 +92,9 @@ const ProductListing = () => {
               );
             })}
           </div>
-            {/* Filter By Type End */}
+            {/* -------------Filter By Type End--------- */}
 
-            {/* Filter by Gender*/}
+          {/* ----------------Filter by Gender Start-----------*/}
           <div className="gender-selection">
           <h6>Filter By Gender</h6>
             <form action="#">
@@ -113,24 +116,27 @@ const ProductListing = () => {
               </label>
             </form>
           </div>
-          {/* Filter by Gender End*/}
+         {/* ----------------Filter by Gender End-----------*/}
           
-          {/* Filter by  Color*/}
+
+          {/* -------------Filter by  Color Start ---------*/}
           <div className="color-selection">
           <h6>Filter By Color</h6>
           
            {filterByCategoryColor.map((ele, index)=>{
-            if(ele==="All"){
+
+            // Checking if Element === ALL then adding Diifrent Section 
+            if(ele=="All"){
               return (
-                <i type="button" 
+                <button type="button" 
                 value={ele} 
                 key={index*new Date()}
                 name="color"
                 // style={{ margin:'5px'}} 
                 onClick={updateProductbyFilter}
-                 className="btnStyle" >
-                 All
-                </i>
+                 className="btnStyle">
+                  All
+                </button>
               )
             }
            else return (
@@ -138,38 +144,44 @@ const ProductListing = () => {
               value={ele} 
               key={index*new Date()}
               name="color"
-              style={{backgroundColor: ele, margin:'5px' }} 
+              style={{backgroundColor: ele, margin:'5px', "padding":"5px" }} 
               
               onClick={updateProductbyFilter}
                className={color===ele ? "btnStyle fa fa-check" : "btnStyle not-selected"  }>
-                {color === ele ? "" : null}
+               
               </button>
             )
            })}
           </div>
-          {/* Filter by  Color End*/}
+         {/* -------------Filter by  Color End ---------*/}
 
 
 
 
-          {/* Filter by  Price*/}
+          {/* ------------Filter by Price Start-----------*/}
            <div className="filter-price">
             <h6>Filter By Price</h6>
             <p>Price Rs{price}</p>
             <input type="range" min={minPrice} max={maxPrice} value={price} name="price" onChange={updateProductbyFilter} />
 
            </div>
-          {/* Filter by  Price End*/}
+          {/* ------------Filter by Price End-----------*/}
 
-          {/* Clear Filter Button Start */}
-          <button className="btn btn-danger" onClick={clearFilters}>Clear Filter</button>
-          {/* Clear Filter Button End */}
+
+
+          {/* ---------Clear Filter Button Start----- */}
+          <button className="btn btn-danger clear-filter-btn" onClick={clearFilters}>Clear Filter</button>
+          {/* ---------Clear Filter Button End---------- */}
 
 
         
         </div>
         {/* SideFilter End Here */}
+
+        {/* -----------Product Card Section Start-------- */}
         <div className="Products-Cards">
+
+          {/* Adding Filter_Product using map Function */}
           {filter_Products?.map((ele) => {
             return (
               <div className="Product-Card" key={ele.id}>
@@ -185,6 +197,7 @@ const ProductListing = () => {
             );
           })}
         </div>
+        {/* -----------Product Card Section End-------- */}
       </div>
     </>
   );

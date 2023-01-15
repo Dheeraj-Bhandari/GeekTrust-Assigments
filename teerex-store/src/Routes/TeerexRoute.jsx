@@ -9,9 +9,9 @@ const TeerexRoute = () => {
   return (
     <>
     <Routes>
-        <Route path="/cart" element={<Cart/>} />
+        <Route path="/cart" element={<><NavBar/>, <Cart/></>} />
         <Route path="/" element={<><NavBar/>, <HomePage/></>} />
-        <Route path="/products" element={<ProductListing/>} />
+        <Route path="/products" element={<><NavBar/>, <ProductListing/></>} />
         
     </Routes>
     </>

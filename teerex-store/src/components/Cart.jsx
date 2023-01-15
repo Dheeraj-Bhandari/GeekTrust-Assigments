@@ -1,24 +1,25 @@
 import React from "react";
 import { useCartContext } from "../context/cart.Context";
 import "./cartCss.css";
-import NavBar from "./NavBar";
 const Cart = () => {
   const { cart, removeProductFromCart, clearCart, increaseQty, decreaseQty ,total_amount } =
     useCartContext();
   
-
+  // -------checking If Cart is empty then Showing Message------ Start
   if (cart.length == 0) {
     return (
       <div>
-        <NavBar />
+       
         <h1 style={{ textAlign: "center" }}>No Item in Cart</h1>
       </div>
     );
   }
+  // -------checking If Cart is empty then Showing Message------ End
 
+  // -------Else Showing Cart Item Start-------
   return (
     <>
-      <NavBar />
+     
       <div className="cart-Container">
         <table>
             <thead>
@@ -31,7 +32,7 @@ const Cart = () => {
             <th>REMOVE</th>
           </tr>
             </thead>
-
+        {/*  ------Cart Item Section Start-------*/}
           {cart?.map((ele, index) => {
             return (
               <tfoot key={index}>
@@ -74,8 +75,10 @@ const Cart = () => {
               </tfoot>
             );
           })}
+         {/*  ------Cart Item Section End-------*/}
         </table>
 
+          {/* ----Cart Total Section Start */}
         <div className="cart-btns">
           <button className="btn btn-dark">CHECKOUT</button>
           <button className="btn btn-danger" onClick={clearCart}>
@@ -97,9 +100,11 @@ const Cart = () => {
             <h4>Rs {total_amount+250}</h4>
           </div>
         </div>
+          {/* ----Cart Total Section End */}
+
       </div>
     </>
   );
 };
-
+// -------Else Showing Cart Item End-------
 export default Cart;
