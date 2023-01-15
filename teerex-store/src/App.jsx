@@ -1,18 +1,10 @@
-
-import TeerexRoute from './Routes/TeerexRoute'
+import TeerexRoute from "./Routes/TeerexRoute";
 function App() {
- 
-  
-
   return (
-     
-         
     <div className="App">
-      <TeerexRoute/>
-     
+      <TeerexRoute />
     </div>
-    
-  )
+  );
 }
 
-export default App
+export default App;

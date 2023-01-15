@@ -1,8 +1,9 @@
 import { createContext, useContext,  useEffect, useReducer } from "react";
 import  reducer from '../reducer/productReducer'
+import { Getapi } from "../api";
 const AppContext = createContext();
 
-
+// Creating Product Context To Show Data to UI 
 const AppProvider = ({children})=>{
     const initialState ={
         isLoading : false,
@@ -12,15 +13,13 @@ const AppProvider = ({children})=>{
     }
     const [state, dispatch] = useReducer(reducer, initialState)
 
-
+    // Fecthing API Data With UseEeffect 
     useEffect(() => {
         // Fecthing Product Data from API using IIFE function
         (async function fetchProduct() {
             dispatch({type : "SET_LOADING"})
           try {
-            fetch(
-              "https://geektrust.s3.ap-southeast-1.amazonaws.com/coding-problems/shopping-cart/catalogue.json"
-            )
+            fetch(Getapi)
               .then((response) => response.json())
               .then((data) => {
                dispatch({type : "API_DATA", payload : data})
