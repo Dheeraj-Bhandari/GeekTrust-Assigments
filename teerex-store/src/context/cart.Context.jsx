@@ -5,7 +5,7 @@ const CartContext = createContext();
 // ---- Funciton For Retainig Data or Cart from localStorage Start-----
 const getLocalCartDataFromLC = () => {
   let newCartData = JSON.parse(localStorage.getItem("teerexShop"));
-  if (newCartData == []) return [];
+  if (!newCartData) return [];
   else return newCartData;
 };
 // ---- Funciton For Retainig Data or Cart from localStorage End-----

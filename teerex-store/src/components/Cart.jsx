@@ -56,13 +56,13 @@ const Cart = () => {
 
                 <td>
                   <i
-                    class="fa fa-minus"
+                    className="fa fa-minus"
                     aria-hidden="true"
                     onClick={() => decreaseQty(ele.id)}
                   ></i>
                   <span style={{ color: "blue" }}> {ele.qty} </span>
                   <i
-                    class="fa fa-plus"
+                    className="fa fa-plus"
                     aria-hidden="true"
                     onClick={() => increaseQty(ele.id)}
                   ></i>

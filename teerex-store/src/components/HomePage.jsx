@@ -3,12 +3,12 @@ import React from "react";
 const HomePage = () => {
   return (
     <>
-      <ul class="list-group list-group-light list-group-small">
-        <li class="list-group-item text-bg-danger">Features Implemented</li>
-        <li class="list-group-item text-bg-dark">Did not use any Dependency for Desiginig or Implementing any Core Feautre</li>
-        <li class="list-group-item text-bg-dark">Writing Function and Code in With Comments and Proper Error handling to Increase Readability</li>
-        <li class="list-group-item text-bg-dark">Used Redcuder to manage the State for Clean Code </li>
-        <li class="list-group-item text-bg-dark">Created Diifrent Context and Reducer (Cart, Filter, Prouct) to Increase Extensibility of Code</li>
+      <ul className="list-group list-group-light list-group-small">
+        <li className="list-group-item text-bg-danger">Features Implemented</li>
+        <li className="list-group-item text-bg-dark">Did not use any Dependency for Desiginig or Implementing any Core Feautre</li>
+        <li className="list-group-item text-bg-dark">Writing Function and Code in With Comments and Proper Error handling to Increase Readability</li>
+        <li className="list-group-item text-bg-dark">Used Redcuder to manage the State for Clean Code </li>
+        <li className="list-group-item text-bg-dark">Created Diifrent Context and Reducer (Cart, Filter, Prouct) to Increase Extensibility of Code</li>
 
       </ul>
       <img
