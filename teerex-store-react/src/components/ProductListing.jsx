@@ -6,10 +6,10 @@ import { useCartContext } from "../context/cart.Context";
 
 const ProductListing = () => {
   const { isLoading } = useProductContext();
-  const { addToCart } = useCartContext();
+
   const [showMobileFilter, setshowMobileFilter] = useState(false);
 
-  // Getting all Filter Context Value
+  // Getting all Filter Context Value and Function
   const {
     filters: { type, color, price, maxPrice, minPrice },
     filter_Products,
@@ -18,6 +18,10 @@ const ProductListing = () => {
     updateProductbyFilter,
     clearFilters,
   } = useFilterContext();
+
+// Getting Cart Context Values and function
+const { addToCart} = useCartContext();
+
 
   // FUNCITON TO GET THE UNIQUE DATA FOR EACH FIED DEFINED IN FILTER SECTION
   const getUniqueData = (data, property) => {
@@ -211,11 +215,14 @@ const ProductListing = () => {
                 <p>Rs. {ele.price}</p>
                 <button
                   type="button"
+                  id={ele.id}
                   className="btn btn-success"
                   onClick={() => addToCart(ele.id, ele.color, ele.price, ele)}
                 >
                   Add to Cart
                 </button>
+                
+                
               </div>
             );
           })}

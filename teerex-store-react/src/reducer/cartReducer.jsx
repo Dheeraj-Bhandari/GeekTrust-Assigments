@@ -2,6 +2,7 @@
 // Cart Reducer to Manage the Cart Items
 
 
+
 const cartReducer = (state, action) => {
 
     // -----------Add To Cart Reducer Start-----------
@@ -9,6 +10,8 @@ const cartReducer = (state, action) => {
         let {id, color, price, ele} = action.payload;
         let cartProduct;
   
+        
+
         // If Product Already exsist update Qty only Function Start
         let alreadyExistProduct = state.cart.find((ele)=>ele.id == id + color)
         
@@ -54,6 +57,8 @@ const cartReducer = (state, action) => {
         
         
                 }
+                document.getElementById(id).innerText="Added To Cart"
+                document.getElementById(id).style.backgroundColor="grey"
                 return {
                     ...state, 
                     cart:[...state.cart, cartProduct],
