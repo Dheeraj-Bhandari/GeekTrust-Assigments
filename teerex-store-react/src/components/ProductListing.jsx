@@ -7,8 +7,8 @@ import { useCartContext } from "../context/cart.Context";
 const ProductListing = () => {
   const { isLoading } = useProductContext();
   const { addToCart } = useCartContext();
-  const [showMobileFilter, setshowMobileFilter] = useState(false)
- 
+  const [showMobileFilter, setshowMobileFilter] = useState(false);
+
   // Getting all Filter Context Value
   const {
     filters: { type, color, price, maxPrice, minPrice },
@@ -42,7 +42,23 @@ const ProductListing = () => {
       <div className="main">
         {/* SideFilter Start Here */}
 
-        <div className={showMobileFilter ? "SideBar-Filter-Mobile" : "SideBar-Filter"}>
+        {/* Mobile Flter Start */}
+        <div className="mobile-filter">
+          <i
+            class="fa-solid fa-filter"
+            onClick={() => setshowMobileFilter(!showMobileFilter)}
+          >
+         
+            <span style={{ padding: "10px" , cursor:"pointer"}}>Filter</span>
+          </i>
+        </div>
+        {/* Mobile Filter End */}
+
+        <div
+          className={
+            showMobileFilter ? "SideBar-Filter-Mobile" : "SideBar-Filter"
+          }
+        >
           {/* ----------Filter by Sort start ---------*/}
           <div className="sort-selection">
             <form action="#">
@@ -183,17 +199,9 @@ const ProductListing = () => {
         </div>
         {/* SideFilter End Here */}
 
-          {/* Mobile Flter Start */}
-          <div className="mobile-filter">
-            <i class="fa-solid fa-filter" onClick={(prev)=>setshowMobileFilter(!prev)} > <span style={{"padding":"10px"}}>Filter</span></i>
-          </div>
-          {/* Mobile Filter End */}
-
-
         {/* -----------Product Card Section Start-------- */}
 
         <div className="Products-Cards">
-
           {/* Adding Filter_Product using map Function */}
           {filter_Products?.map((ele) => {
             return (

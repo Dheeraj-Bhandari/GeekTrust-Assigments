@@ -36,6 +36,7 @@
 .mobile-filter{
 
     display: none;
+   
 }
 /* Product Card End */
 
@@ -53,6 +54,11 @@
     }
     .SideBar-Filter-Mobile{
         display: block;
+        align-items: center;
+        justify-content: center;
+        display: flex;
+        flex-direction: column;
+        margin-top: 2rem;
     }
     .main{
        
