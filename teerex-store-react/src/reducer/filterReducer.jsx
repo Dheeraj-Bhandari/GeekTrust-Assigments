@@ -72,10 +72,10 @@ const filterReducer = (state, action) => {
       if (text) {
         tempFilterData = tempFilterData.filter((ele) => {
           return (
-            ele.name.toLowerCase().includes(text) ||
-            ele.color.toLowerCase().includes(text) ||
-            ele.type.toLowerCase().includes(text) ||
-            ele.gender.toLowerCase().includes(text)
+            ele.name.toLowerCase().includes(text.toLowerCase()) ||
+            ele.color.toLowerCase().includes(text.toLowerCase()) ||
+            ele.type.toLowerCase().includes(text.toLowerCase()) ||
+            ele.gender.toLowerCase().includes(text.toLowerCase())
           );
         });
       }
