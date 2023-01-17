@@ -2,5 +2,5 @@
 
 ##Teerex Store
 ```
-https://teerex-store-geektrust-by-dheeraj.netlify.app/
+https://geektrust-teerex-store-by-dheeraj.netlify.app/
 ```
