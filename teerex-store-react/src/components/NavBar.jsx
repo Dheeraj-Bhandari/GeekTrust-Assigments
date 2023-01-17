@@ -4,7 +4,7 @@ import { useFilterContext } from "../context/filter_Context";
 import { Link } from "react-router-dom";
 import HomePage from "./HomePage";
 
-const NavBar = () => {
+const NavBar = ({ showSearch }) => {
   const {
     filters: { text },
     updateProductbyFilter,
@@ -27,30 +27,41 @@ const NavBar = () => {
           <Link className="navbar-brand" to="/products">
             PRODUCTS
           </Link>
-          {/* NavBar Button End */}
-
           {/* Navbar Search Form Start */}
-          <form className="d-flex" role="search">
-            <input
-              className="form-control me-2"
-              type="text"
-              name="text"
-              value={text}
-              onChange={updateProductbyFilter}
-              placeholder="Search"
-              aria-label="Search"
-            />
-            <p className="btn btn-outline-success" type="submit">
-              Search
-            </p>
-            {/* Cart Icon Start   */}
-            <Link to="/cart">
-              <i className="fa-solid fa-2x fa-cart-shopping">
-                {total_item > 0 ? total_item : null}
-              </i>
-            </Link>
-            {/* Cart Icon End */}
-          </form>
+
+          {showSearch ? (
+            <form
+              className="d-flex"
+              role="search"
+              style={{
+                gap: "20px",
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+              }}
+            >
+              <input
+                className="form-control me-2"
+                type="text"
+                name="text"
+                value={text}
+                onChange={updateProductbyFilter}
+                placeholder="Search"
+                aria-label="Search"
+              />
+              <p className="btn btn-outline-success" type="submit">
+                Search
+              </p>
+              {/* Cart Icon Start   */}
+              <Link to="/cart">
+                <i className="fa-solid fa-2x fa-cart-shopping">
+                  {total_item > 0 ? total_item : null}
+                </i>
+              </Link>
+              {/* Cart Icon End */}
+            </form>
+          ) : null}
+
           {/* Navbar Search Form End */}
         </div>
       </nav>
