@@ -123,9 +123,9 @@ const filterReducer = (state, action) => {
           type: "All",
           color: "All",
           gender: "all",
-          maxPrice: 0,
+          maxPrice: state.filters.maxPrice,
           price: state.filters.maxPrice,
-          minPrice: state.filters.maxPrice,
+          minPrice: 0,
         },
       };
     // --------Clear All Filter Reducer  End-----
