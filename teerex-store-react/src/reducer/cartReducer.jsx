@@ -27,7 +27,7 @@ const cartReducer = (state, action) => {
                         // Checking if Qty of Product is More the Available Quantity Then Showing Alert to User
                         if(Curele.quantity == Curele.qty){
                             
-                            alert("Item Qty Reached")
+                            alert("Maximum Available Quantity Reached")
                         }
                     }
                     return {
@@ -76,7 +76,7 @@ const cartReducer = (state, action) => {
                 // If Qty of Product Reach to Maximum Available Quantity Then Showing Alert to User
                 if(incQty>ele.quantity){
                     incQty=ele.quantity;
-                    alert("Qty Limit Reached")
+                    alert("Maximum Available Quantity Reached")
                 }
                 return {
                     ...ele,
